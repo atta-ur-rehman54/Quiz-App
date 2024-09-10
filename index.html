@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 class="heading">Web Development<br><span id="quiz">Quiz App</span> </h1>
+    <div class="container">
+        <form class="box" id="quiz-form">
+            <h2 class="heading" id="question"></h2>
+            <input type="radio" name="answer" value="" id="option1"> <label for="option1" id="label1"></label><br>
+            <input type="radio" name="answer" value="" id="option2"> <label for "option2" id="label2"></label><br>
+            <input type="radio" name="answer" value="" id="option3"> <label for="option3" id="label3"></label><br>
+            <input type="radio" name="answer" value="" id="option4"> <label for="option4" id="label4"></label><br><br>
+            <button type="button" id="next" style="display: none;">Next</button>
+        </form>
+        <p id="score" style="display: none;"></p>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: 'What does HTML stand for?',
+                options: ['Hyper Text Markup Language', 'High Tech Multi-Language', 'Hyper Transfer Markup Language', 'Hyperlink and Text Markup Language'],
+                answer: 0,
+            },
+            {
+                question: 'Which language is used for styling web pages?',
+                options: ['HTML', 'CSS', 'JavaScript', 'Python'],
+                answer: 1,
+            },
+            {
+                question: 'What is the standard markup language for creating web pages?',
+                options: ['Java', 'CSS', 'HTML', 'Python'],
+                answer: 2,
+            },
+            {
+                question: 'What does CSS stand for?',
+                options: ['Central Style Sheet', 'Cascading Style Sheets', 'Cascading Simple Sheet', 'Cars SUV Sail Bolts'],
+                answer: 1,
+            },
+            {
+                question: 'Which language is used for adding interactivity to web pages?',
+                options: ['CSS', 'HTML', 'JavaScript', 'PHP'],
+                answer: 2,
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionElement = document.getElementById('question');
+        const labelElements = [document.getElementById('label1'), document.getElementById('label2'), document.getElementById('label3'), document.getElementById('label4')];
+        const optionElements = [document.getElementById('option1'), document.getElementById('option2'), document.getElementById('option3'), document.getElementById('option4')];
+        const nextButton = document.getElementById('next');
+        const scoreElement = document.getElementById('score');
+
+        function showQuestion() {
+            if (currentQuestion < questions.length) {
+                const question = questions[currentQuestion];
+                questionElement.textContent = question.question;
+                for (let i = 0; i < 4; i++) {
+                    labelElements[i].textContent = question.options[i];
+                    optionElements[i].value = i;
+                }
+                nextButton.style.display = 'none';
+            } else {
+                showScore();
+            }
+
+            // Reset radio button selection
+            for (let i = 0; i < 4; i++) {
+                optionElements[i].checked = false;
+            }
+        }
+
+        function showScore() {
+            questionElement.style.display = 'none';
+            for (let i = 0; i < 4; i++) {
+                labelElements[i].style.display = 'none';
+                optionElements[i].style.display = 'none';
+            }
+            nextButton.style.display = 'none';
+            scoreElement.textContent = `Your Score: ${score} out of ${questions.length}`;
+            scoreElement.style.display = 'block';
+        }
+
+        showQuestion();
+
+        for (let i = 0; i < 4; i++) {
+            optionElements[i].addEventListener('change', () => {
+                nextButton.style.display = 'block';
+            });
+        }
+
+        nextButton.addEventListener('click', () => {
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+            if (selectedOption) {
+                const userAnswer = parseInt(selectedOption.value);
+                const correctAnswer = questions[currentQuestion].answer;
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+                currentQuestion++;
+                showQuestion();
+            }
+        });
+    </script>
+</body>
+</html>

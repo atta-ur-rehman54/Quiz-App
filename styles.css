@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@900&display=swap');
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    background-color: #c2edda;
+
+}
+h1{
+    font-size: 64px;
+    font-family: 'Roboto', sans-serif;
+    margin: 100px 0 0 420px;
+}
+
+#quiz{
+    padding-left: 100px;
+}
+
+.container {
+    background-color: #2d545e;
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-size: 23px;
+}
+
+.box {
+    padding: 10px;
+}
+
+/* .heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+} */
+
+input[type="radio"] {
+    margin: 5px;
+}
+
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#btn:hover {
+    background-color: #0056b3;
+}
+
+p {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#next{
+    background-color: #007BFF;
+    font-size: 27px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    width: 580px;
+    border-radius: 8px;
+    border: 0;
+}
